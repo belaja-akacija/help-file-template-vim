@@ -1,0 +1,7 @@
+Main features:
+- Generate a help-file template, interactively
+- Allow to add contents from another script (such as table of contents and headings) and format them and insert them appropriately. 
+- Update the main hub file to the sub branches using helptags
+
+Sub Features:
+- Use lua functions in vim to add sections and such while live editing the file

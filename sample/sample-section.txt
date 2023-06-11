@@ -1,0 +1,30 @@
+*section.txt*       section one line description
+
+small description of what this section is about
+
+============================================================
+CONTENTS
+    
+    1. section 1 .......... |section1|
+    2. section 2 .......... |section2|
+    3. section 3 .......... |section3|
+============================================================
+Section 1: something                              *section1* (make sure the last * lines up with the last =)
+
+small section description
+------------------------------------------------------------ (this separates subsections within the section
+
+...text goes here...
+------------------------------------------------------------
+
+...text goes here...
+============================================================
+Section 2: something                              *section2*
+
+small section description
+------------------------------------------------------------
+
+...text goes here...
+------------------------------------------------------------
+
+ vim:tw=78:ts=8:noet:ft=help:norl:

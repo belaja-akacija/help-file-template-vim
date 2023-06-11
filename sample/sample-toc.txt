@@ -1,0 +1,19 @@
+*sample-toc.txt*    sample-toc one line description
+                            |SAMPLE TOC|
+//
+//
+//          full description goes here
+//
+//
+
+============================================================
+CONTENTS
+
+    1. Section .......... |Section|
+    2. Section .......... |Section|
+    3. Section .......... |Section|
+    4. Section .......... |Section|
+    5. Section .......... |Section|
+------------------------------------------------------------
+
+ vim:tw=78:ts=8:noet:ft=help:norl:

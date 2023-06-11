@@ -10,11 +10,11 @@
   "generates help file header"
   (labels (
            (get-title ()
-             (format t "Enter title: ")
+             (format t "Enter a title: ")
              (let ((title (read-line)))
                title))
            (get-description ()
-             (format t "Enter description ")
+             (format t "Enter a description: ")
              (let ((description (read-line)))
                description)))
     (let ((title (get-title))
@@ -46,4 +46,11 @@
 
 (defun make-template (header toc)
   (let ((separator (make-string (length header) :initial-element *separator-equal*)))
-    (format t "~A~%~A~%~A" header separator toc))) ; this will get kinda ridiculous later on. Is there a better way?
+    (format nil "~A~%~A~%~A" header separator toc))) ; this will get kinda ridiculous later on. Is there a better way?
+
+(defun make-template* (file template)
+    (with-open-file (stream file
+                            :direction :output
+                            :if-exists :overwrite
+                            :if-does-not-exist :create)
+      (format stream template)))

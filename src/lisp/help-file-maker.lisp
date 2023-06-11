@@ -21,6 +21,10 @@
           (description (get-description)))
     (format nil "*~A*~30T~A" title description))))
 
+;; TODO format each entry with "....... |entry|"
+;; make sure they line up with each other, regardless of length of entry.
+;; take the longest entry and line everything up with that 
+;; something along the lines of: (make-string (length longest-entry) :initial-element #\.)
 (defun generate-table-of-contents ()
   "generates table of contents, enumerated"
   (format t "Enter table of contents.~%")

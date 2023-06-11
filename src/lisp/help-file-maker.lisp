@@ -19,9 +19,9 @@
                description)))
     (let ((title (get-title))
           (description (get-description)))
-    (format nil "*~A*~30T~A" title description))))
+      (format nil "*~A*~30T~A" title description))))
 
-;; TODO format each entry with "....... |entry|"
+;; TODO format each entry as "$i. entry ....... |entry|"
 ;; make sure they line up with each other, regardless of length of entry.
 ;; take the longest entry and line everything up with that 
 ;; something along the lines of: (make-string (length longest-entry) :initial-element #\.)
@@ -31,9 +31,11 @@
   (labels ((enumerate-list (lst i strng)
              (let ((formatted-string "")
                    (temp-string ""))
-             (if (string= (car lst) "")
-                 (format nil "~A" strng)
-               (enumerate-list (cdr lst) (1+ i) (string-concat strng (string (digit-char i)) ". " (car lst) (string #\NewLine)))))))
+               (if (string= (car lst) "")
+                   (format nil "~A" strng)
+                   (enumerate-list (cdr lst) 
+                                   (1+ i) 
+                                   (string-concat strng (string (digit-char i)) ". " (car lst) (string #\NewLine)))))))
     (let ((steps '())
           (i 1))
       (loop while (not (string= (car steps) ""))
@@ -44,4 +46,4 @@
 
 (defun make-template (header toc)
   (let ((separator (make-string (length header) :initial-element *separator-equal*)))
-    (format t "~A~%~A~%~A" header separator toc)))
+    (format t "~A~%~A~%~A" header separator toc))) ; this will get kinda ridiculous later on. Is there a better way?

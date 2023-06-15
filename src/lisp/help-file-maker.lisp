@@ -4,6 +4,7 @@
 
 (defparameter *test-file* #P "../../tests/test-template.txt")
 (defparameter *test-toc* '())
+(defparameter *test-sec* "")
 (defparameter *separator-equal* #\=)
 (defparameter *separator-dash* #\-)
 
@@ -51,7 +52,9 @@
              (let ((formatted-string "")
                    (temp-string ""))
                (if (string= (car lst) "")
-                   (format nil "~A" strng)
+                   (progn
+                     (setf *test-sec* strng)
+                     (format nil "~A" strng))
                    (format-each-section (cdr lst)
                                         (1+ i)
                                         (string-concat strng (string-upcase (car lst)) (string #\NewLine) (make-string 60 :initial-element #\=) (string #\NewLine)))))))
@@ -59,11 +62,11 @@
 
 (defun make-template (header toc section)
   (let ((separator (make-string (length header) :initial-element *separator-equal*)))
-    (format nil "~A~%~A~%~A~%~A" header separator toc separator section))) ; this will get kinda ridiculous later on. Is there a better way?
+    (format nil "~A~%~A~%~A~%~A~%~A" header separator toc separator section))) ; this will get kinda ridiculous later on. Is there a better way?
 
 (defun make-template* (file template)
-    (with-open-file (stream file
-                            :direction :output
-                            :if-exists :overwrite
-                            :if-does-not-exist :create)
-      (format stream template)))
+  (with-open-file (stream file
+                          :direction :output
+                          :if-exists :overwrite
+                          :if-does-not-exist :create)
+    (format stream template)))
